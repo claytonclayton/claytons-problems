@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash/
 
 # Run from task directory after running bash ../gen-output.sh
 # Usage example: bash ../check.sh
@@ -9,8 +9,11 @@
 time_limit=1
 
 i=1
-names=()
+col_sep=0
+in_names=()
+sol_names=()
 ex=()
+
 for sol in solutions/accepted/*; do
     run_solution=./solution
 
@@ -29,36 +32,47 @@ for sol in solutions/accepted/*; do
 
     short=${sol#solutions/accepted/}
     short=${short%.*}
-    names+=($short)
+    sol_names+=($short)
     ((i++))
 done
 
 check() {
     x=$1
-    name=$2
+    sol_name=$2
     file=$3
     expected=$4
 
     actual=$(timeout $time_limit $x < $file)
     exit_code=$?
     if [ $exit_code -ne 0 ]; then
-        printf "\033[1;33m$name\033[0m "
+        printf "\033[1;93m$sol_name\033[0m " # 1;33 for original darker yellow
     elif diff -wq $expected <(echo $actual) > /dev/null; then
-        printf "\033[1;32m$name\033[0m "
+        printf "\033[1;32m$sol_name\033[0m " 
     else
-        printf "\033[1;31m$name\033[0m "
+        printf "\033[1;31m$sol_name\033[0m "
     fi
-
 }
 
 for file in $(find data -name "*.in" | sort); do
-    expected=${file%in}out
-    short=${file#"data/"}
-    short=${short%.in}
-    echo -n $short ""
+    in_name=${file#"data/"}
+    in_name=${in_name%.in}
+    in_names+=$in_name
+    sep=$(echo $in_name | wc -c)
+    if [ $sep -gt $col_sep ]; then
+        col_sep=$sep
+    fi
+done
 
-    for i in ${!names[@]}; do
-        check "${ex[$i]}" "${names[$i]}" $file $expected
+for file in $(find data -name "*.in" | sort); do
+    expected=${file%in}out
+    in_name=${file#"data/"}
+    in_name=${in_name%.in}
+    sep=$(echo $in_name | wc -c)
+    
+    echo -n $in_name ""
+
+    for i in ${!sol_names[@]}; do
+        check "${ex[$i]}" "${sol_names[$i]}" $file $expected
     done
     echo ""
 done
