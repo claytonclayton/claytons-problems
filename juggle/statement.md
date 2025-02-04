@@ -3,7 +3,7 @@
 **Program memory limit: 512 MB**
 
 ### Juggle
-Terry the Chainsaw Juggler juggles chainsaws for a living at UNSW's Chainsaw Juggling Society, Chainsaw JuggleSoc. At each second a chainsaw wielded by Terry will arc across the sky, transitioning anticlockwise from one point on an $n$-sided polygon to another. Every second while in flight a chainsaw will also rotate $\frac{2 \pi}{d}$ radians around its base causing the tip of the chainsaw to enter the inside and outside of the central polygon. 
+Terry the Chainsaw Juggler juggles chainsaws for a living at UNSW's Chainsaw Juggling Society, Chainsaw JuggleSoc. Every second a chainsaw wielded by Terry will arc across the sky, transitioning anticlockwise from one point on an $n$-sided polygon to another. Every second while in flight a chainsaw will also rotate $\frac{2 \pi}{d}$ radians around its base, causing the tip of the chainsaw to enter the inside and outside of the central polygon. 
 
 Terry lets $n$ chainsaws fly and is hoping to wow the crowd during his $k$ second performance. A flourish occurs when the tips of all $n$ chainsaws are pointing inside the central polygon. How many flourishes will Terry perform within his performance?
 
