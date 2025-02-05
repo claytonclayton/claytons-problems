@@ -4,7 +4,7 @@
 # Usage example: bash ../check.sh
 
 # Description: Tests all solutions in solutions/accepted against
-# expected output. Green for AC, red for WA, yellow for TLE. 
+# expected output. Green for AC (Accepted), red for WA (Wrong Answer), yellow for TLE (Time Limit Exceeded). 
 
 time_limit=1
 
