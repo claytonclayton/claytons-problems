@@ -3,7 +3,7 @@ Some competitive programming problems I wrote/helped write for UNSW CPMSoc 2024 
 
 | problem   | statement | solution | explanation | attributions | validator | generator | passed check |
 | --------- | --------- | -------- | ----------- | ------------ | --------- | --------- | ------------ |
-| cpmerriam | o         | o        | x           | x            | x         | x         | x            |
+| cpmerriam | o         | o        |             |              |           |           |              |
 
 # List
 o - cpmerriam
