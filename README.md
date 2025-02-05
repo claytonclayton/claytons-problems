@@ -1,5 +1,9 @@
 # claytons_problems
-Some competitive programming problems I wrote/helped write in 2024
+Some competitive programming problems I wrote/helped write for UNSW CPMSoc 2024 (Competitive Programming and Mathematics Society)
+
+| problem   | statement | solution | explanation | attributions | validator | generator | passed check |
+| --------- | --------- | -------- | ----------- | ------------ | --------- | --------- | ------------ |
+| cpmerriam | o         | o        | x           | x            | x         | x         | x            |
 
 # List
 o - cpmerriam
