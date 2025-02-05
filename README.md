@@ -4,6 +4,18 @@ Some competitive programming problems I wrote/helped write for UNSW CPMSoc 2024 
 | problem   | statement | solution | explanation | attributions | validator | generator | passed check |
 | --------- | --------- | -------- | ----------- | ------------ | --------- | --------- | ------------ |
 | cpmerriam | o         | o        |             |              |           |           |              |
+| hestia    | o         | o        |             |              |           |           |              |
+| ianuary   | o         | o        |             |              |           |           |              |
+| insertion | o         | o        |             |              |           |           |              |
+| juggle    | o         | o        |             |              |           |           |              |
+| paper     | o         | o        |             |              |           |           |              |
+| parity    | o         | o        |             |              |           |           |              |
+| pears     | o         | o        |             |              |           |           |              |
+| pride     | o         | o        |             |              |           |           |              |
+| ruslana   | o         | o        |             |              |           |           |              |
+| shiritori | o         | o        |             |              |           |           |              |
+| tentacles | o         | o        |             |              |           |           |              |
+| tragic    | o         | o        |             |              |           |           |              |
 
 # List
 o - cpmerriam
