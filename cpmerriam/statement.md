@@ -30,20 +30,10 @@ Output a single integer, the number of words in the dictionary that are learnabl
 
 ### Constraints
 
-For all test cases:
-
-- $2 \le N \le 20\; 000$
+- 50 points - $2 \le N \le 1000$
+- 100 points - $2 \le N \le 20\; 000$
 - Each line will contain 2 to 10 words
 - Each word consists of 1 to 10 english characters
-
-For Subtask 1 ($50\%$ of points):
-
-- $2 \le N \le 1000$
-
-For Subtask 2 ($50\%$ of points):
-
-- There are no additional constraints.
-
 
 ### Sample Input 1
 
