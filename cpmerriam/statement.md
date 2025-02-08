@@ -30,8 +30,16 @@ Output a single integer, the number of words in the dictionary that are learnabl
 
 ### Constraints
 
-- 50 points - $2 \le N \le 1000$
-- 100 points - $2 \le N \le 20\; 000$
+For Subtask 1 (50 points):
+
+- 2 ≤ N ≤ 1000 
+
+For Subtask 2 (50 points):
+
+- 2 ≤ N ≤ 20,000
+
+For all test cases:
+
 - Each line will contain 2 to 10 words
 - Each word consists of 1 to 10 english characters
 
@@ -77,7 +85,11 @@ things: plural of thing
 
 There are only 2 words in the dictionary that are learnable: "things" and "type".
 
+## Attribution
+- problem design - Ashley Clayton
+- problem statement - Ashley Clayton
+- solutions - Ashley Clayton, Bat-Erdene Batsukh, Frank Zhang
+- testcase data - Ashley Clayton
+- validator - Ashley Clayton
+- proofreaders - Bat-Erdene Batsukh
 
-### Scoring
-
-For each subtask (each worth $50\%$ of points, as per the Constraints section), your program will be run on multiple secret test cases one after another, and if it produces the correct output for **all** test cases, it solves that subtask. Your program will receive the points for each subtask it solves. Recall that your final score on the task is the score of your highest scoring submission.
