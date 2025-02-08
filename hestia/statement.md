@@ -1,3 +1,5 @@
+# Hestian Triples
+
 **Program time limit: 1 second**
 
 **Program memory limit: 512 MB**
@@ -12,8 +14,6 @@ the triples of an array would be faster.
 
 A *Hestian Triple* is a triplet of integers $i$, $j$ and $k$ such that $1 \le i \lt j \lt k \le n$ and $a_i \times a_j = a_k$. She wonders, given an array $a$, how many Hestian Triples does it contain?
 
-Help Hestia find the answer.
-
 ### Input
 
 The first line of input contains one integer $n$, the length of the array $a$.
@@ -21,8 +21,6 @@ The first line of input contains one integer $n$, the length of the array $a$.
 The next line has $n$ whitespaced integers, $a_1, a_2, \cdots a_n$ where $a_i$ is the $i^{th}$ element of $a$.
 
 ### Constraints
-
-Each input case will satisfy the following constraints
 
 - $1 \le n \le 10,000$
 - for all $1 \le i \le n$, $1 \le a_i \le 10^{18}$
@@ -69,5 +67,3 @@ There are exactly 2 Hestian Triples
 $a_1 \times a_2 = a_4$ ($5 \times 4 = 20$)  
 $a_1 \times a_3 = a_4$ ($5 \times 4 = 20$)  
 
-### Scoring
-Your program will be tested on multiple inputs one after another. Your score for the submission will be 100% if your program outputs the correct answer for all of these inputs.
