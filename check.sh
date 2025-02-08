@@ -2,8 +2,9 @@
 
 # Run from task directory after running bash ../gen-output.sh
 # Usage example: bash ../check.sh
-
-# Description: Tests all solutions in solutions/accepted against
+#                bash ../check.sh <file or folder name>
+# Description: Tests all solutions in target file or folder 
+# (or in solutions/accepted if not specified) against
 # expected output. Green for AC (Accepted), red for WA 
 # (Wrong Answer), yellow for TLE (Time Limit Exceeded). 
 
@@ -11,6 +12,7 @@ time_limit=1
 
 i=1
 col_sep=0
+sol_dir='solutions/accepted'
 in_names=()
 in_files=()
 sol_names=()
@@ -37,9 +39,13 @@ check() {
     else
         printf "\033[1;31m$sol_name\033[0m "
     fi
-}
+} 
 
-for sol in solutions/accepted/*; do
+if [ $# -ne 0 ] && [ -d $1 -o -f $1 ]; then
+    sol_dir=$1
+fi
+
+for sol in $(find "$sol_dir" -type f); do
     run_solution=./solution
 
     if [[ $sol == *.cpp ]]; then
@@ -51,15 +57,19 @@ for sol in solutions/accepted/*; do
     elif [[ $sol == *.py ]]; then
         ex+=("python3 $sol")
     else
-        echo "unsupported file extension"
         continue
     fi
 
-    short=${sol#solutions/accepted/}
+    short=$(basename $sol)
     short=${short%.*}
     sol_names+=($short)
     ((i++))
 done
+
+if [ ${#ex[@]} -eq 0 ]; then
+    echo "error: could not find any solution files"
+    exit 0
+fi
 
 for file in $(find data -name "*.in" | sort); do
     in_name=${file#"data/"}
@@ -87,7 +97,7 @@ for i in ${!in_files[@]}; do
     echo -n "$in_name" ""
 
     for j in ${!sol_names[@]}; do
-        check ${ex[$j]} ${sol_names[$j]} $file $expected
+        check "${ex[$j]}" ${sol_names[$j]} $file $expected
     done
     echo ""
 
