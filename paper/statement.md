@@ -21,7 +21,7 @@ There are two different fold directions, Up and Left, and two different fold typ
 - Left Mountain (<code class="d-inline-block">LM</code>).
     - This fold is performed by taking the right side of the paper and folding it away from you and left onto the back facing side. This would result in a vertical mountain crease when unfolded.
 
-The diagrams below depict a <code class="d-inline-block">UV</code>, <code class="d-inline-block">UM</code>, <code class="d-inline-block">LV</code> and <code class="d-inline-block">LM</code> respectively.\
+The diagrams below depict <code class="d-inline-block">UV</code>, <code class="d-inline-block">UM</code>, <code class="d-inline-block">LV</code> and <code class="d-inline-block">LM</code> respectively.\
 <img src="images/UV.png" height="300">
 <img src="images/UM.png" height="300">
 <img src="images/LV.png" height="300">
