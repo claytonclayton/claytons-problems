@@ -22,10 +22,10 @@ There are two different fold directions, Up and Left, and two different fold typ
     - This fold is performed by taking the right side of the paper and folding it away from you and left onto the back facing side. This would result in a vertical mountain crease when unfolded.
 
 The diagrams below depict an Up Valley fold, Up Mountain fold, Left Valley fold and Left Mountain fold respectively.
-<img src="/static/UV.png" height="300">
-<img src="/static/UM.png" height="300">
-<img src="/static/LV.png" height="300">
-<img src="/static/LM.png" height="300">
+<img src="images/UV.png" height="300">
+<img src="images/UM.png" height="300">
+<img src="images/LV.png" height="300">
+<img src="images/LM.png" height="300">
 
 ### Input
 The first line of input contains the two integers $R$ and $C$, which is the size of grid of rectangles formed by the creases.
@@ -67,14 +67,14 @@ UV
 
 ### Explanation 1
 The given creases are depicted below.
-<img src="/static/sample1-final.png" height="300">
+<img src="images/sample1-final.png" height="300">
 
 A sequence of folds which would result in those given creases is depicted below.
-<img src="/static/sample1-step-1.png" height="300">
+<img src="images/sample1-step-1.png" height="300">
 <br>
-<img src="/static/sample1-step-2.png" height="300">
+<img src="images/sample1-step-2.png" height="300">
 <br>
-<img src="/static/sample1-step-3.png" height="150">
+<img src="images/sample1-step-3.png" height="150">
 <br>
 
 ### Sample Input 2
