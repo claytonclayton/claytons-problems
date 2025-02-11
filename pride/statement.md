@@ -7,7 +7,7 @@ It’s pride month (at least it was pride month when this question was written) 
 A DAG is FAB if it is not STRAIGHT. A STRAIGHT DAG is a series of nodes that connect to form a straight line. More specifically you can visit all nodes in a STRAIGHT DAG from head to tail within a single journey.
 
 <p align="center">
-<img src="images/straight-1.jpg" width=100%>
+<img src="images/straight-1.gv" width=100%>
 <img src="images/straight-2.jpg" width=80%>
 </p>
 
