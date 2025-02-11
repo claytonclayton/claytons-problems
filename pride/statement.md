@@ -7,15 +7,15 @@ It’s pride month (at least it was pride month when this question was written) 
 A DAG is FAB if it is not STRAIGHT. A STRAIGHT DAG is a series of nodes that connect to form a straight line. More specifically you can visit all nodes in a STRAIGHT DAG from head to tail within a single journey.
 
 <p align="center">
-<img src="/static/straight-1.jpg" width=100%>
-<img src="/static/straight-2.jpg" width=80%>
+<img src="images/straight-1.jpg" width=100%>
+<img src="images/straight-2.jpg" width=80%>
 </p>
 
 A FAB DAG is anything that is NOT STRAIGHT.
 
 <p align="center">
-<img src="/static/fab-1.jpg" width=70%>
-<img src="/static/fab-2.jpg" width=100%>
+<img src="images/fab-1.jpg" width=70%>
+<img src="images/fab-2.jpg" width=100%>
 </p>
 
 Given a DAG is it FAB?
@@ -88,7 +88,3 @@ SLAY
 
 This DAG is the same as the first example FAB DAG. SLAY!
 
-### Scoring
-
-<!-- Your program will be run on the 2 sample cases and 8 secret cases one after another, each worth 10% of the points.
-Recall that your final score on the task is the score of your highest scoring submission. -->
