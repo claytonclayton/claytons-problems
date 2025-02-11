@@ -64,5 +64,5 @@ Note that this sample **does not** satisfy the constraints.
 ```
 
 ### Explanation 1
-<img src="/static/ruslana-sample-1.png" width=50%> 
+<img src="images/ruslana-sample-1.png" width=50%> 
 The question is: After $4$ days what is the probability that the houses form a valid $4$-colouring? It can be shown that this is equal to $1/256$. Oh but wouldn't the road $2 \rightarrow 3$ become negative after Tenant 1 travels across it? What happens if negative cycles are made? What happens when $r$ exceeds the length of the path? I dunno. This sample doesn't fall within the constraints. I don't know how to do this question lol.
