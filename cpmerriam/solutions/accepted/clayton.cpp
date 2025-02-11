@@ -1,3 +1,4 @@
+// Attribution: Ashley Clayton (2024)
 
 #include <iostream>
 #include <vector>
@@ -36,6 +37,12 @@ int main() {
         lens.push_back(a);
     }
 
+    // create DAG out of the dictionary
+    // by drawing an edge from a parent word
+    // to all other words in the dictionary
+    // that belong in the parent's definition.
+    // the parent will be learnable if
+    // all its children are learnable
     for (int i = 0; i < n; i++) {
         string word;
         cin >> word;
@@ -47,10 +54,14 @@ int main() {
         }
     }
 
+    // perform directed cycle checking dfs
     for (auto[word, _] : dict) {
         if (!seen[word]) dfs(word);
     }
 
+    // all words that are not within cycles 
+    // or are ancestors of cycles 
+    // will be learnable
     int sol = 0;
     for (auto[word, _]: dict) {
         sol += cycled[word] == 0;
