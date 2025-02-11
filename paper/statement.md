@@ -22,7 +22,6 @@ There are two different fold directions, Up and Left, and two different fold typ
     - This fold is performed by taking the right side of the paper and folding it away from you and left onto the back facing side. This would result in a vertical mountain crease when unfolded.
 
 The diagrams below depict an Up Valley fold, Up Mountain fold, Left Valley fold and Left Mountain fold respectively.\
-
 <img src="images/UV.png" height="300">
 <img src="images/UM.png" height="300">
 <img src="images/LV.png" height="300">
