@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Attribution: Frank Zhang (2024)
 
 n = int(input())
 lengths = list(map(int, input().split())) # Shouldn't be needed for python
