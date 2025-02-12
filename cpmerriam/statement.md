@@ -85,7 +85,7 @@ things: plural of thing
 
 There are only 2 words in the dictionary that are learnable: "things" and "type".
 
-# Attribution
+## Attribution
 - problem design - Ashley Clayton
 - problem statement - Ashley Clayton
 - solutions - Ashley Clayton, Bat-Erdene Batsukh, Frank Zhang

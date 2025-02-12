@@ -68,10 +68,10 @@ $a_1 \times a_2 = a_4$ ($5 \times 4 = 20$)
 $a_1 \times a_3 = a_4$ ($5 \times 4 = 20$)  
 
 ## Attribution
-problem design: Ashley Clayton
-problem statement: Ashley Clayton
-solutions: Ashley Clayton, Kyle Zhang
-testcase data: Ashley Clayton
-validator: Isaiah Iliffe, Ashley Clayton
-proofreaders: Isaiah Iliffe
+- problem design: Ashley Clayton
+- problem statement: Ashley Clayton
+- solutions: Ashley Clayton, Kyle Zhang
+- testcase data: Ashley Clayton
+- validator: Isaiah Iliffe, Ashley Clayton
+- proofreaders: Isaiah Iliffe
 
