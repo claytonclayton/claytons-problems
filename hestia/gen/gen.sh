@@ -6,7 +6,9 @@ FOURTH_ROOT_LLMAX=31600
 mkdir -p data/random
 
 echo "Generating inputs"
-g++ -std=c++17 -O2 -o random gen/random.cpp
+
+set -v
+g++ -std=c++17 -O2 -o random gen/generator.cpp
 g++ -std=c++17 -O2 -o rand_arr gen/rand_arr.cpp
 
 # general test
@@ -54,8 +56,9 @@ rand_arr=$(./rand_arr 10 1 $FOURTH_ROOT_LLMAX)
 ./random 1000 0 0 1 $rand_arr > data/random/21.in
 ./random 10000 0 0 1 $rand_arr > data/random/22.in
 
+set +v
 rm random
 rm rand_arr
 
 echo "Generating outputs"
-bash ../generate.sh solutions/accepted/clayton.cpp
+bash ../solver.sh solutions/accepted/clayton.cpp
