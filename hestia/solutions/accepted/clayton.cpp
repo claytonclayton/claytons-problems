@@ -1,4 +1,6 @@
 
+// Attribution: Ashley Clayton (2024)
+
 /*
 Medium 2-pointer solution in O(n^2):
 Let the original array be arr. Create a new array of pairs called a where each a_i = {arr_i, i}
