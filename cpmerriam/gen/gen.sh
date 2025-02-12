@@ -4,7 +4,9 @@
 mkdir -p data/random
 
 echo "Generating inputs"
-g++ -std=c++17 -O2 -o random gen/random.cpp
+
+set -v
+g++ -std=c++17 -O2 -o random gen/generator.cpp
 
 # sub1 DAGs
 ./random 20 0.5 0.1 0 > data/random/sub1-01.in
@@ -30,8 +32,10 @@ g++ -std=c++17 -O2 -o random gen/random.cpp
 ./random 20000 0.1 0.1 2 > data/random/sub2-07.in
 ./random 20000 0.5 0.5 5 > data/random/sub2-08.in
 
+set +v
+
 rm random
 
 echo "Generating outputs"
-bash ../gen-output.sh solutions/accepted/clayton.cpp
+bash ../solver.sh solutions/accepted/clayton.cpp
 
