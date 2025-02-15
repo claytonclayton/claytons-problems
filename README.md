@@ -5,7 +5,7 @@ Some competitive programming problems I wrote/helped write for UNSW CPMSoc 2024 
 | problem   | statement | solution | explanation | attributions | validator | generator | passed check |
 | --------- | --------- | -------- | ----------- | ------------ | --------- | --------- | ------------ |
 | cpmerriam | o         | o        | o           | o            | o         | o         | o            |
-| hestia    | o         | o        |             | o            | o         | o         |              |
+| hestia    | o         | o        | o           | o            | o         | o         | o            |
 | ianuary   |           |          |             |              |           |           |              |
 | insertion |           |          |             |              |           |           |              |
 | juggle    |           |          |             |              |           |           |              |
