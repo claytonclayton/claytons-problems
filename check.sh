@@ -18,10 +18,26 @@ in_files=()
 sol_names=()
 ex=()
 
+trap 'rm -rf actual __pycache__' EXIT
+# trap 'rm -rf actual __pycache__; for x in "${ex[@]}"; if [[ $i =~ ^\./ ]]; then rm ${i#./}; fi; done' EXIT
+
 repeat() {
     for i in $(seq $1); do
 	echo -n "$2"
     done
+}
+
+# BETTER NAME?
+print_res() {
+    sol_name=$1
+    res=$2
+    if [ $res = AC ]; then
+        printf "\033[1;32m$sol_name\033[0m " 
+    elif [ $res = TLE ]; then
+	printf "\033[1;93m$sol_name\033[0m " # 1;33 for original darker yellow
+    else
+	printf "\033[1;31m$sol_name\033[0m " 
+    fi
 }
 
 check() {
@@ -30,15 +46,24 @@ check() {
     in_file=$3
     expected=$4
 
-    actual=$(timeout $time_limit $x < $in_file)
+    (timeout $time_limit $x < $in_file) > actual
     exit_code=$?
     if [ $exit_code -ne 0 ]; then
-        printf "\033[1;93m$sol_name\033[0m " # 1;33 for original darker yellow
-    elif diff -wq $expected <(echo $actual) > /dev/null; then
-        printf "\033[1;32m$sol_name\033[0m " 
+	print_res $sol_name TLE
+    elif [ -f "checkout.py" ]; then
+	# HOW TO MAKE THIS A MULTILINE STRING?
+	res=$(python3 -c "from checkout import checker; f = open(\"actual\"); print(checker(f, \"$in_file\", \"$expected\")); f.close()")
+	if [ $res = "1.0" ]; then
+	    print_res $sol_name AC
+	else
+	    print_res $sol_name WA
+	fi
+    elif diff -wq $expected actual > /dev/null; then
+        print_res $sol_name AC
     else
-        printf "\033[1;31m$sol_name\033[0m "
+	print_res $sol_name WA
     fi
+    rm actual
 } 
 
 if [ $# -ne 0 ] && [ -d $1 -o -f $1 ]; then
@@ -108,3 +133,4 @@ for i in "${ex[@]}"; do
         rm ${i#./}
     fi
 done
+

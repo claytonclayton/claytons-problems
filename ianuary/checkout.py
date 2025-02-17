@@ -18,6 +18,8 @@ def checker(student_output_file, input_path, output_path):
     try:
         student_output = student_output_file.read().split()
     except:
+        print(student_output_file)
+        print('cat')
         return 0.0
 
     with open(output_path) as f:
@@ -27,7 +29,7 @@ def checker(student_output_file, input_path, output_path):
         inputt = [i.strip().split() for i in f.readlines()[1:]]
         for i in range(len(inputt)):
             inputt[i] = [int(j) for j in inputt[i]]
-
+    
     i = 0
     j = 0
     k = 0
