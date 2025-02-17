@@ -27,10 +27,10 @@ repeat() {
 check() {
     x=$1
     sol_name=$2
-    file=$3
+    in_file=$3
     expected=$4
 
-    actual=$(timeout $time_limit $x < $file)
+    actual=$(timeout $time_limit $x < $in_file)
     exit_code=$?
     if [ $exit_code -ne 0 ]; then
         printf "\033[1;93m$sol_name\033[0m " # 1;33 for original darker yellow
@@ -91,13 +91,13 @@ done
 
 for i in ${!in_files[@]}; do    
     in_name=${in_names[$i]}
-    file=${in_files[$i]}
-    expected=${file%in}out
+    in_file=${in_files[$i]}
+    expected=${in_file%in}out
 
     echo -n "$in_name" ""
 
     for j in ${!sol_names[@]}; do
-        check "${ex[$j]}" ${sol_names[$j]} $file $expected
+        check "${ex[$j]}" ${sol_names[$j]} $in_file $expected
     done
     echo ""
 
