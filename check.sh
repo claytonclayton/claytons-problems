@@ -18,6 +18,8 @@ in_files=()
 sol_names=()
 ex=()
 
+# Attempted to try to delete extraneous temp files made during runtime
+# kinda doesn't work
 trap 'rm -rf actual __pycache__' EXIT
 # trap 'rm -rf actual __pycache__; for x in "${ex[@]}"; if [[ $i =~ ^\./ ]]; then rm ${i#./}; fi; done' EXIT
 
@@ -28,6 +30,9 @@ repeat() {
 }
 
 # BETTER NAME?
+# Given a verdict string (WA, TLE, AC) and file name
+# print a colourful version of filename with colour
+# corresponding to verdict
 print_res() {
     sol_name=$1
     res=$2
@@ -40,6 +45,11 @@ print_res() {
     fi
 }
 
+# Tests solution against an input file and compares
+# to an expected output. Jankily calls a directory's
+# checkout.py check function if inputs have multiple
+# outputs. Finally prints out the verdict in a
+# colouful way
 check() {
     x=$1
     sol_name=$2
@@ -66,10 +76,15 @@ check() {
     rm actual
 } 
 
+# takes in optional argument that specifies
+# what directory to find solutions from.
+# defaults to solutions/accepted
 if [ $# -ne 0 ] && [ -d $1 -o -f $1 ]; then
     sol_dir=$1
 fi
 
+# populates list of executables and
+# short pretty names for solutions
 for sol in $(find "$sol_dir" -type f); do
     run_solution=./solution
 
@@ -91,11 +106,16 @@ for sol in $(find "$sol_dir" -type f); do
     ((i++))
 done
 
+# if no solutions were found in sol_dir
+# then early exit
 if [ ${#ex[@]} -eq 0 ]; then
     echo "error: could not find any solution files"
     exit 0
 fi
 
+# finds short pretty names for input files.
+# determines whitespace separator length to make
+# the result print in nice columns
 for file in $(find data -name "*.in" | sort); do
     in_name=${file#"data/"}
     in_name=${in_name%.in}
@@ -107,6 +127,8 @@ for file in $(find data -name "*.in" | sort); do
     fi
 done
 
+# adds whitespace to in_names to make
+# pretty columns
 for i in ${!in_names[@]}; do
     in_name=${in_names[$i]}
     sep=$(echo $in_name | wc -c)
@@ -114,6 +136,8 @@ for i in ${!in_names[@]}; do
     in_names[$i]=$replacer
 done
 
+# checks each solution against the current
+# input
 for i in ${!in_files[@]}; do    
     in_name=${in_names[$i]}
     in_file=${in_files[$i]}
@@ -128,6 +152,7 @@ for i in ${!in_files[@]}; do
 
 done
 
+# remove temp files
 for i in "${ex[@]}"; do
     if [[ $i =~ ^\./ ]]; then
         rm ${i#./}
