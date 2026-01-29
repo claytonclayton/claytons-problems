@@ -14,42 +14,59 @@ def get_icount(a):
             return -1
     return total
 
+def split_into_answers(lines):
+    answers = [[]]
+    for line in lines:
+        answers[-1].append(line)
+        if line != 'YES':
+            answers.append([])
+    return answers[:-1]
+
 def checker(student_output_file, input_path, output_path):
     try:
-        student_output = student_output_file.read().split()
+        actual = student_output_file.read().split()
     except:
-        print(student_output_file)
-        print('cat')
         return 0.0
 
     with open(output_path) as f:
-        judge_output = f.read().split()
+        expected = f.read().split()
 
     with open(input_path) as f:
-        inputt = [i.strip().split() for i in f.readlines()[1:]]
-        for i in range(len(inputt)):
-            inputt[i] = [int(j) for j in inputt[i]]
-    
-    i = 0
-    j = 0
-    k = 0
-    while (i < len(student_output) and j < len(judge_output) and k < len(inputt)):
-        if (student_output[i] != judge_output[j]):
+        inputss = [i.strip().split() for i in f.readlines()[1:]]
+        for i in range(len(inputss)):
+            inputss[i] = [int(j) for j in inputss[i]]
+
+    actuals = split_into_answers(actual)
+    expecteds = split_into_answers(expected)
+
+    for line in zip(inputss, actuals, expecteds):
+        inputs_n = line[0][0]
+        inputs_m = line[0][1]
+        actual = line[1]
+        actual_verdict = actual[0] 
+        expected = line[2]
+        expected_verdict = expected[0]
+      
+        # if expected is YES then actual should be YES 
+        if expected_verdict != actual_verdict:
+            print(expected_verdict, actual_verdict)
             return 0.0
-        elif (student_output[i] == 'NO'):
-            i += 1
-            j += 1
-            k += 1
-        elif (student_output[i] == 'YES'):
-            i += 1
-            j += 1
-            if (len(student_output[i]) != inputt[k][0]):
-                return 0.0
-            if (get_icount(student_output[i].strip()) != inputt[k][1]):
-                return 0.0
-            i += 1
-            j += 1
-            k += 1
-        else:
+
+        # if they are both NO, then there will be no following arr
+        if expected == ['NO'] and actual == expected:
+            continue
+
+        actual_arr = line[1][1]
+        expected_verdict = line[2][0]
+
+        if len(actual_arr) != inputs_n:
+            print("bad len", len(actual_arr), inputs_n)
             return 0.0
+        
+        if get_icount(actual_arr) != inputs_m:
+            print("wrong icount", get_icount(actual_arr), inputs_m)
+            return 0.0
+
     return 1.0
+
+

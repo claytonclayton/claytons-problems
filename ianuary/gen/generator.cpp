@@ -28,7 +28,7 @@ void generate_in_file(int file_index, int t, int max_n, int max_m) {
     ofstream tst("../data/random/"+to_string(file_index)+".in");
     tst << t << endl;
  
-    for (int i = 0; i < t / 3 + 1; i++) {
+    for (int i = 0; i < t / 3; i++) {
 	int n = rnd.next(1, max_n);
 	int m = rnd.next(1, max_m);
 
@@ -52,7 +52,7 @@ void generate_in_file(int file_index, int t, int max_n, int max_m) {
 
 void generate_small_mins() {
     ofstream tst("../data/handcases/1.in");
-    tst << 100 << endl;
+    tst << 200 << endl;
     for (int i = 1; i <= 100; i++) {
         tst << mins[i]     << " " << i << endl;
         tst << mins[i] - 1 << " " << i << endl;
@@ -65,7 +65,7 @@ int main(int argc, char** argv) {
     registerGen(argc, argv, 1);
     read_min_file();
     generate_small_mins();
-    generate_in_file(1, 100, mins[M], M);
-    generate_in_file(2, M, mins[M], M);
-    generate_in_file(3, M, M, M);
+    generate_in_file(1, 99, mins[M], M);
+    generate_in_file(2, M - 1, mins[M], M);
+    generate_in_file(3, M - 1, M, M);
 }
