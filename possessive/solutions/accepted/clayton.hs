@@ -1,0 +1,1 @@
+main = interact $ (++"\n") . init . init . unwords . fmap (++ "'s") . reverse . fmap (\x -> if ((||) <$> (== "the ") <*> (== "The ")) (take 4 x) then drop 4 x else x) . fmap init . ((:) <$> snd <*> fst) . foldr (\x (fi, se) -> if x == "of" then (se:fi, "") else (fi, x ++ " " ++ se)) ([], "") . words . (!! 1) . lines
