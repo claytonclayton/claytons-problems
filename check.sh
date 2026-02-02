@@ -23,9 +23,13 @@ ex=()
 trap 'rm -rf actual __pycache__' EXIT
 # trap 'rm -rf actual __pycache__; for x in "${ex[@]}"; if [[ $i =~ ^\./ ]]; then rm ${i#./}; fi; done' EXIT
 
-repeat() {
+repeater() {
+    if [ $1 -eq  0 ]; then
+        echo -n ''
+        return
+    fi
     for i in $(seq $1); do
-	echo -n "$2"
+	      echo -n "$2"
     done
 }
 
@@ -39,9 +43,9 @@ print_res() {
     if [ $res = AC ]; then
         printf "\033[1;32m$sol_name\033[0m " 
     elif [ $res = TLE ]; then
-	printf "\033[1;93m$sol_name\033[0m " # 1;33 for original darker yellow
+	    printf "\033[1;93m$sol_name\033[0m " # 1;33 for original darker yellow
     else
-	printf "\033[1;31m$sol_name\033[0m " 
+	    printf "\033[1;31m$sol_name\033[0m " 
     fi
 }
 
@@ -59,19 +63,19 @@ check() {
     (timeout $time_limit $x < $in_file) > actual
     exit_code=$?
     if [ $exit_code -ne 0 ]; then
-	print_res $sol_name TLE
+	      print_res $sol_name TLE
     elif [ -f "checkout.py" ]; then
-	# HOW TO MAKE THIS A MULTILINE STRING?
-	res=$(python3 -c "from checkout import checker; f = open(\"actual\"); print(checker(f, \"$in_file\", \"$expected\")); f.close()")
-	if [ $res = "1.0" ]; then
-	    print_res $sol_name AC
-	else
-	    print_res $sol_name WA
-	fi
+	      # HOW TO MAKE THIS A MULTILINE STRING?
+	      res=$(python3 -c "from checkout import checker; f = open(\"actual\"); print(checker(f, \"$in_file\", \"$expected\")); f.close()")
+	  if [ $res = "1.0" ]; then
+	      print_res $sol_name AC
+	  else
+	      print_res $sol_name WA
+	  fi
     elif diff -wq $expected actual > /dev/null; then
         print_res $sol_name AC
     else
-	print_res $sol_name WA
+	      print_res $sol_name WA
     fi
     rm actual
 } 
@@ -87,9 +91,9 @@ fi
 # short pretty names for solutions
 for sol in $(find "$sol_dir" -type f); do
     run_solution=./solution
-
     if [[ $sol == *.cpp ]]; then
-        g++ -O2 -std=c++17 $sol -o $i
+        # g++ -O2 -std=c++20 $sol -o $i
+        g++-15 -std=gnu++20 $sol -o $i
         ex+=(./$i)
     elif [[ $sol == *.c ]]; then
         gcc -O2 -lm $sol -o $i
@@ -130,16 +134,16 @@ done
 # adds whitespace to in_names to make
 # pretty columns
 for i in ${!in_names[@]}; do
-    in_name=${in_names[$i]}
-    sep=$(echo $in_name | wc -c)
-    replacer=$in_name"$(repeat $(($col_sep - $sep)) ' ' )"
-    in_names[$i]=$replacer
+    in_name="${in_names[$i]}"
+    sep=$(echo "$in_name" | wc -c)
+    replacer="$in_name$(repeater $(($col_sep - $sep)) ' ' )"
+    in_names[$i]="$replacer"
 done
 
 # checks each solution against the current
 # input
 for i in ${!in_files[@]}; do    
-    in_name=${in_names[$i]}
+    in_name="${in_names[$i]}"
     in_file=${in_files[$i]}
     expected=${in_file%in}out
 
