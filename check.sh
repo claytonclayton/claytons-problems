@@ -93,14 +93,21 @@ for sol in $(find "$sol_dir" -type f); do
     run_solution=./solution
     if [[ $sol == *.cpp ]]; then
         g++ -O2 -std=c++20 $sol -o $i
-        ex+=(./$i)
+        status=$?
     elif [[ $sol == *.c ]]; then
         gcc -O2 -lm $sol -o $i
-        ex+=(./$i)
+        status=$?
     elif [[ $sol == *.py ]]; then
         ex+=("python3 $sol")
+        status=0
     elif [[ $sol == *.hs ]]; then
         ghc -O2 -no-keep-hi-files -no-keep-o-files $sol -o $i 
+        status=$?
+    else
+        continue
+    fi
+
+    if [ $status -eq 0 ]; then
         ex+=(./$i)
     else
         continue
