@@ -17,11 +17,14 @@ in_names=()
 in_files=()
 sol_names=()
 ex=()
+ext=.exe
+aux_dir="../aux/"
 
-# Attempted to try to delete extraneous temp files made during runtime
-# kinda doesn't work
+# to allow for early exit with ctrl-c
 trap 'rm -rf actual __pycache__' EXIT
-# trap 'rm -rf actual __pycache__; for x in "${ex[@]}"; if [[ $i =~ ^\./ ]]; then rm ${i#./}; fi; done' EXIT
+trap 'exit 130' INT
+
+rm $aux_dir*
 
 repeater() {
     if [ $1 -eq  0 ]; then
@@ -90,25 +93,25 @@ fi
 # populates list of executables and
 # short pretty names for solutions
 for sol in $(find "$sol_dir" -type f); do
-    run_solution=./solution
+    exe="$aux_dir$i$ext"
     if [[ $sol == *.cpp ]]; then
-        g++ -O2 -std=c++20 $sol -o $i
+        g++ -O2 -std=c++20 $sol -o $exe
         status=$?
     elif [[ $sol == *.c ]]; then
-        gcc -O2 -lm $sol -o $i
+        gcc -O2 -lm $sol -o $exe
         status=$?
     elif [[ $sol == *.py ]]; then
         ex+=("python3 $sol")
         status=0
     elif [[ $sol == *.hs ]]; then
-        ghc -O2 -no-keep-hi-files -no-keep-o-files $sol -o $i 
+        ghc -O2 -no-keep-hi-files -no-keep-o-files $sol -o $exe
         status=$?
     else
         continue
     fi
 
     if [ $status -eq 0 ]; then
-        ex+=(./$i)
+        ex+=("$aux_dir/./$i$ext")
     else
         continue
     fi
@@ -165,10 +168,15 @@ for i in ${!in_files[@]}; do
 
 done
 
-# remove temp files
-for i in "${ex[@]}"; do
-    if [[ $i =~ ^\./ ]]; then
-        rm ${i#./}
-    fi
-done
+cleanup() {
+    rm -rf actual __pycache__
+    for i in "${ex[@]}"; do
+        if [[ $i =~ ^\./ ]]; then
+            rm -f ${i#./}
+        fi
+    done
+}
+
+trap cleanup EXIT
+trap 'cleanup; exit 130' INT TERM
 
