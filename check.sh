@@ -24,6 +24,7 @@ aux_dir="../aux/"
 trap 'rm -rf actual __pycache__' EXIT
 trap 'exit 130' INT
 
+mkdir -p $aux_dir
 rm $aux_dir*
 
 repeater() {
