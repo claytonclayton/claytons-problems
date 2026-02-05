@@ -18,14 +18,14 @@ in_files=()
 sol_names=()
 ex=()
 ext=.exe
-aux_dir="../aux/"
+aux="../aux/"
 
 # to allow for early exit with ctrl-c
 trap 'rm -rf actual __pycache__' EXIT
 trap 'exit 130' INT
 
-mkdir -p $aux_dir
-rm $aux_dir*
+rm -rf $aux
+mkdir -p $aux
 
 repeater() {
     if [ $1 -eq  0 ]; then
@@ -93,8 +93,10 @@ fi
 
 # populates list of executables and
 # short pretty names for solutions
+echo "compiling..."
 for sol in $(find "$sol_dir" -type f); do
-    exe="$aux_dir$i$ext"
+    base=$(basename $sol)
+    exe="$aux$base$ext"
     if [[ $sol == *.cpp ]]; then
         g++ -O2 -std=c++20 $sol -o $exe
         status=$?
@@ -112,16 +114,17 @@ for sol in $(find "$sol_dir" -type f); do
     fi
 
     if [ $status -eq 0 ]; then
-        ex+=("$aux_dir/./$i$ext")
+        if [[ $sol != *.py ]]; then
+            ex+=("$aux./$base$ext")
+        fi
     else
         continue
     fi
 
-    short=$(basename $sol)
-    #short=${short%.*}
-    sol_names+=($short)
-    ((i++))
+    sol_names+=($base)
 done
+
+echo ${ex[@]}
 
 # if no solutions were found in sol_dir
 # then early exit
