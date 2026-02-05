@@ -4,5 +4,5 @@ Some competitive programming problems I've written throughout my career for ebul
 ## How to use
 To compare solutions with each other, ```cd``` into a directory and use the command ```bash ../check.sh```. 
 
-![images/check.png]
+![example of check command](images/check.png)
 
