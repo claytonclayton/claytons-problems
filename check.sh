@@ -124,8 +124,6 @@ for sol in $(find "$sol_dir" -type f); do
     sol_names+=($base)
 done
 
-echo ${ex[@]}
-
 # if no solutions were found in sol_dir
 # then early exit
 if [ ${#ex[@]} -eq 0 ]; then
