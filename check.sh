@@ -94,7 +94,7 @@ fi
 # populates list of executables and
 # short pretty names for solutions
 echo "compiling..."
-for sol in $(find "$sol_dir" -type f); do
+for sol in $(find "$sol_dir" -type f | sort); do
     base=$(basename $sol)
     exe="$aux$base$ext"
     if [[ $sol == *.cpp ]]; then

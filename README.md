@@ -1,20 +1,7 @@
-# claytons_problems
-Some competitive programming problems I wrote/helped write for UNSW CPMSoc 2024 (Competitive Programming and Mathematics Society)
+# Clayton's Problems
+Some competitive programming problems I've written throughout my career for ebullient entities such as UNSW CPMSoc, COMP4128 and UNSW Prog Comp. This repo is mainly for nosy recruiters haha, but also for prospective problem setters who want to learn some tricks of the trade. And what a trade it is.
 
-## task completion
-| problem   | statement | solution | explanation | attributions | validator | generator | passed check |
-| --------- | --------- | -------- | ----------- | ------------ | --------- | --------- | ------------ |
-| cpmerriam | o         | o        | o           | o            | o         | o         | o            |
-| hestia    | o         | o        | o           | o            | o         | o         | o            |
-| ianuary   |           |          |             |              |           |           |              |
-| insertion |           |          |             |              |           |           |              |
-| juggle    |           |          |             |              |           |           |              |
-| paper     |           |          |             |              |           |           |              |
-| parity    |           |          |             |              |           |           |              |
-| pears     |           |          |             |              |           |           |              |
-| pride     |           |          |             |              |           |           |              |
-| ruslana   |           |          |             |              |           |           |              |
-| shiritori |           |          |             |              |           |           |              |
-| tentacles |           |          |             |              |           |           |              |
-| tragic    |           |          |             |              |           |           |              |
+## How to use
+To compare solutions with each other, ```cd``` into a directory and use the command ```bash ../check.sh```. 
+![images/check.png]
 
