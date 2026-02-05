@@ -16,4 +16,4 @@ sol += 3 * one * stat ** 2                  # two clockwise, one stationary
 sol += 3 * one ** 2 * 1/2 * (one + stat)    # two duel, one either stationary or clockwise
 
 print(sol)
-print(float(sol))
+# print(float(sol))
