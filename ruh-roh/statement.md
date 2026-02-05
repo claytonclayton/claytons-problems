@@ -3,7 +3,7 @@
 **Program memory limit: 512 MB**
 
 <p align="center">
-    <img src="/static/ro.png" width=50%>
+    <img src="images/ro.png" width=50%>
 </p>
 
 Ro rows her rose row boat up the rows of a roiling river flow. Ro rows no oars, only Ro's rose is known to Ro, which Ro rows Ro's rose row boat with, rosily. Ro's rose is rosy and old and has only a few rose petals holding on, denoted by rho. Of Ro's woes, not only is there old rose, but rolicking roe cultures in each row that Ro's river flows. Each row has a number of roe denoted by rho. Roused by rampant roes, Ro dons Ro's rose to row Ro's rose row boat from row i to row i + rho, in turn reducing Ro's rose rho by one and reducing row i's roes rho by rho. Rho cannot exceed the current row's roe rho. Call the maximum roe rho of all rows, row roe rho. To put a close to Ro's roe woes, Ro began at the first row and rose up the flow rows with at most rose rho rows until she rowed to row $n$, the row after the final roe row. What is the minimum row roe rho of the roe rows that Ro's rose row boat rose?
