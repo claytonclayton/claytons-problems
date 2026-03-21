@@ -20,6 +20,7 @@ The next line contains n non-negative integers where the i^{th} integer is t_{i}
 
 ### Constraints
 - 1 <= n, k <= 10^5
+- 1 <= t_{i} <= 10^9 
 
 ### Output
 The minimal p such that the dazzlingness of t is at least k.
@@ -29,13 +30,13 @@ Consider an array with only unique integers. It will always have dazzlingness n,
 
 Replace the 0-elements with a fixed p. We can test if the array has a subarray of size k with the dazzling property by maintaining a sliding window of size k, maintaining a count of the number of elements <= p. If at any point the count is <= p then the array has a dazzlingness of at least k. 
 
-Since the dazzling property is monotonic in p, then we can binary search the result. p will be at most the greatest element in t plus O(n), lets call this number T (I suspect there is a lower bound for T). Hence the algorithm runs in O(nlog(T)). 
+Since the dazzling property is monotonic in p, then we can binary search the result. p will be at most n (I think? Consider an array of all 0s). Hence the algorithm runs in O(nlogn). 
 
 ### epic 3121 style monotonicity proof!!1!!11!!
-For clarity, let the function dazzling(p) = true when t[0 := p] contains a subarray s of length k such that when s is sorted, all s_{j} >= j. Let dazzling(p) = false otherwise. The position of the the last p in the sorted subarray s will be number of its elements that are <= p. Let pos(p) be the number of elements in s that are <= p.
+The position of the the last p in a sorted subarray s will be number of its elements that are <= p. Let pos(p) be the number of elements in s that are <= p. Let the function dazzling(p) = true when t[0 := p] contains a subarray s of length k such that when s is sorted, all s_{j} >= j. In other words, dazzling(p) = true when t has a subarray of length k with pos(p) <= p. false otherwise.
 
 1. Prove dazzling(p) => dazzling(p + 1)
-    If dazzling(p) then there exists a subarray of length k with pos(p) <= p. Since non 0-elements are unique, in that subarray there will either be at most one non 0-element == p and at most one non 0-element == p + 1. Hence in t[0 := p + 1] pos(p + 1) will be at most pos(p) + 1 <= p + 1. Hence dazzling(p) => dazzling(p + 1) 
+    If dazzling(p) then t has a subarray of length k with pos(p) <= p. Since non 0-elements are unique, in that subarray there will either be at most one non 0-element == p and at most one non 0-element == p + 1. Hence in t[0 := p + 1] pos(p + 1) will be at most pos(p) + 1 <= p + 1. Hence dazzling(p) => dazzling(p + 1) 
 
 2. Prove NOT dazzling(p) => NOT dazzling(p - 1)
     If NOT dazzling(p) then all subarrays of length k are such that pos(p) is > p. Again since non 0-elements are unique, in those subarrays there will either be at most one non 0-element == p and at most one non 0-element == p - 1. Hence in t[0 := p - 1], pos(p - 1) in any of those subarrays will be at least pos(p) - 1 > p - 1. Hence NOT dazzling(p) => NOT dazzling(p - 1). 
