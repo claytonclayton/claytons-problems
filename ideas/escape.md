@@ -35,10 +35,10 @@ Since the dazzling property is monotonic in p, then we can binary search the res
 ### epic 3121 style monotonicity proof!!1!!11!!
 The position of the the last p in a sorted subarray s will be number of its elements that are <= p. Let pos(p) be the number of elements in s that are <= p. Let the function dazzling(p) = true when t[0 := p] contains a subarray s of length k such that when s is sorted, all s_{j} >= j. In other words, dazzling(p) = true when t has a subarray of length k with pos(p) <= p. false otherwise.
 
-1. Prove dazzling(p) => dazzling(p + 1) \\
+1. Prove dazzling(p) => dazzling(p + 1) \
     If dazzling(p) then t has a subarray of length k with pos(p) <= p. Since non 0-elements are unique, in that subarray there will either be at most one non 0-element == p and at most one non 0-element == p + 1. Hence in t[0 := p + 1] pos(p + 1) will be at most pos(p) + 1 <= p + 1. Hence dazzling(p) => dazzling(p + 1) 
 
-2. Prove NOT dazzling(p) => NOT dazzling(p - 1) \\
+2. Prove NOT dazzling(p) => NOT dazzling(p - 1) \
     If NOT dazzling(p) then all subarrays of length k are such that pos(p) is > p. Again since non 0-elements are unique, in those subarrays there will either be at most one non 0-element == p and at most one non 0-element == p - 1. Hence in t[0 := p - 1], pos(p - 1) in any of those subarrays will be at least pos(p) - 1 > p - 1. Hence NOT dazzling(p) => NOT dazzling(p - 1). 
 
 Hence dazzling(p) is monotonic in p and we can binary search for the least p such that dazzling(p) = true.
